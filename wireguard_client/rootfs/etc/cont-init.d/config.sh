@@ -33,6 +33,12 @@ config="/etc/wireguard/${interface}.conf"
 # Start creation of configuration
 echo "[Interface]" > "${config}"
 
+# Check if listen_port value
+if bashio::config.has_value 'interface.listen_port'; then
+    listen_port=$(bashio::config 'interface.listen_port')
+    echo "ListenPort = ${listen_port}" >> "${config}"
+fi
+
 # Check if at least 1 private key value and if true get the interface private key
 if ! bashio::config.has_value 'interface.private_key'; then
     bashio::exit.nok 'You need a private_key configured for the interface client'
