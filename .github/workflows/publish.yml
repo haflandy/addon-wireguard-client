@@ -19,10 +19,10 @@ jobs:
         uses: home-assistant/builder@2024.08.2
         with:
           args: |
-            --repository https://github.com/bigmoby/addon-wireguard-client \
+            --repository https://github.com/haflandy/addon-wireguard-client \
             --target wireguard_client \
             --branch main \
             --all \
-            --docker-hub bigmoby \
+            --docker-hub haflandy \
             --docker-user ${{ secrets.DOCKERHUB_USERNAME }} \
             --docker-password ${{ secrets.DOCKERHUB_TOKEN }}
